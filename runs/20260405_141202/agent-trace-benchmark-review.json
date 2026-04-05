@@ -1,0 +1,71 @@
+{
+  "version": "0.1.0",
+  "id": "44d996ef-6c01-4cad-b5d8-6ab0eb9d6f0f",
+  "timestamp": "2026-04-05T14:12:10.430196+00:00",
+  "vcs": {
+    "type": "git",
+    "revision": "a79c91dacdbc32c0cc64e5251062a5d210089e64"
+  },
+  "tool": {
+    "name": "xcodebuildmcp_eval",
+    "version": "v2"
+  },
+  "files": [
+    {
+      "path": "runs/20260405_141202/benchmark_review_input.json",
+      "conversations": [
+        {
+          "url": "file:///Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260405_141202/trials/droid-gpt54-flex-shell_primed-smoke_build_install_launch-trial-1775398326370/transcript.txt",
+          "contributor": {
+            "type": "ai",
+            "model_id": "openai/gpt-5.4"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 28
+            }
+          ],
+          "related": [
+            {
+              "type": "benchmark-summary",
+              "url": "file:///Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260405_141202/summary.md"
+            },
+            {
+              "type": "run-record",
+              "url": "file:///Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260405_141202/runs.jsonl"
+            },
+            {
+              "type": "command-trace",
+              "url": "file:///Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260405_141202/trials/droid-gpt54-flex-shell_primed-smoke_build_install_launch-trial-1775398326370/cmd_log.jsonl"
+            },
+            {
+              "type": "tool-error-summary",
+              "url": "file:///Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260405_141202/trials/droid-gpt54-flex-shell_primed-smoke_build_install_launch-trial-1775398326370/tool_error_summary.json"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "benchmark": {
+      "agent_id": "droid-gpt54-flex",
+      "scenario": "shell_primed",
+      "task_id": "smoke_build_install_launch",
+      "success": false,
+      "failure_reason": "app_not_installed",
+      "wall_time_sec": 2.060159921646118,
+      "xcodebuild_calls": 0,
+      "xcrun_calls": 0,
+      "simctl_calls": 0,
+      "tool_error_total": 0
+    },
+    "dev.factory": {
+      "attempted_model_id": "custom:GPT-5.4-flex-4",
+      "attempted_model_label": "GPT-5.4 (Flex)",
+      "observed_error": "Invalid model: GPT-5.4 (Flex)",
+      "review_focus": "why BYOK model resolution failed in droid exec and how to restore a valid flex benchmark path"
+    }
+  }
+}

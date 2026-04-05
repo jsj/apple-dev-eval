@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-04-04T20:10:20.945507+00:00",
+  "run_dir": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623",
+  "runs_csv": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/runs.csv",
+  "summary_csv": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/summary.csv",
+  "total_runs": 2,
+  "runs_with_errors": 1,
+  "runs_with_real_errors": 1,
+  "runs_without_errors": 1,
+  "error_rate_percent": 50.0,
+  "real_error_rate_percent": 50.0,
+  "total_runs_by_agent": {
+    "droid-minimax": 1,
+    "codex": 1
+  },
+  "runs_with_errors_by_agent": {
+    "codex": 1
+  },
+  "runs_with_real_errors_by_agent": {
+    "codex": 1
+  },
+  "errors_by_scenario": {
+    "shell_primed": {
+      "total": 6,
+      "mcp": 0,
+      "non_mcp": 6,
+      "session_defaults": 0,
+      "sibling_cascade": 0,
+      "build_test_failure": 0,
+      "real_errors": 6
+    }
+  },
+  "error_classification": {
+    "total_errors": 6,
+    "session_defaults": 0,
+    "sibling_cascade": 0,
+    "build_test_failure": 0,
+    "real_errors": 6,
+    "excluded_errors": 0,
+    "exclusion_note": "session_defaults: Expected MCP discovery workflow. sibling_cascade: Caused by sibling tool failure. build_test_failure: Tool worked correctly, reported build/test error."
+  },
+  "adjusted_by_agent": {
+    "droid-minimax": {
+      "trials": 1,
+      "real_errors": 0
+    },
+    "codex": {
+      "trials": 1,
+      "real_errors": 6
+    }
+  },
+  "mcp_discovery_errors": 0,
+  "total_mcp_errors": 0,
+  "adjusted_mcp_errors": 6,
+  "entries": [
+    {
+      "run_id": "codex-shell_primed-smoke_build_install_launch-trial-1775333199182",
+      "agent_id": "codex",
+      "scenario": "shell_primed",
+      "task_id": "smoke_build_install_launch",
+      "baseline_run": false,
+      "tool_error_total": 6,
+      "tool_error_mcp": 0,
+      "tool_error_non_mcp": 6,
+      "session_defaults_errors": 0,
+      "sibling_cascade_errors": 0,
+      "build_test_failure_errors": 0,
+      "real_errors": 6,
+      "tool_error_log_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/trials/codex-shell_primed-smoke_build_install_launch-trial-1775333199182/tool_errors.jsonl",
+      "tool_error_context_log_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/trials/codex-shell_primed-smoke_build_install_launch-trial-1775333199182/tool_error_context.jsonl",
+      "transcript_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/trials/codex-shell_primed-smoke_build_install_launch-trial-1775333199182/transcript.txt",
+      "command_log_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/trials/codex-shell_primed-smoke_build_install_launch-trial-1775333199182/cmd_log.jsonl",
+      "mcp_tool_log_path": null
+    }
+  ]
+}

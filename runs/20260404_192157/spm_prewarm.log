@@ -1,0 +1,104 @@
+CMD: xcodebuild -resolvePackageDependencies -project /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/sut/HackerNews/ios/HackerNews.xcodeproj -scheme HackerNews -clonedSourcePackagesDirPath /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/spm_cache
+
+rc=0
+
+STDOUT:
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -resolvePackageDependencies -project /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/sut/HackerNews/ios/HackerNews.xcodeproj -scheme HackerNews -clonedSourcePackagesDirPath /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/spm_cache
+
+Resolve Package Graph
+
+Fetching from https://github.com/EmergeTools/AccessibilitySnapshotios26
+
+Fetching from https://github.com/getsentry/faultordering
+
+Fetching from https://github.com/EmergeTools/SnapshotPreviews
+
+Fetching from https://github.com/EmergeTools/SimpleDebugger
+
+Fetching from https://github.com/EmergeTools/ETDistribution.git
+
+Fetching from https://github.com/getsentry/sentry-cocoa
+
+Fetching from https://github.com/pointfreeco/swift-snapshot-testing
+
+Fetching from https://github.com/EmergeTools/Reaper
+
+Fetching from https://github.com/swhitty/FlyingFox.git
+
+Fetching from https://github.com/uber/ios-snapshot-test-case.git
+
+Fetching from https://github.com/swiftlang/swift-syntax (cached)
+
+Fetching from https://github.com/scinfu/SwiftSoup
+
+Creating working copy of package ‘Reaper’
+
+Checking out 1.6.0 of package ‘Reaper’
+
+Creating working copy of package ‘ios-snapshot-test-case’
+
+Checking out 8.0.0 of package ‘ios-snapshot-test-case’
+
+Creating working copy of package ‘swift-snapshot-testing’
+
+Checking out 1.17.6 of package ‘swift-snapshot-testing’
+
+Creating working copy of package ‘ETDistribution’
+
+Checking out 0.2.1 of package ‘ETDistribution’
+
+Creating working copy of package ‘faultordering’
+
+Checking out main (8c61bbe) of package ‘faultordering’
+
+Creating working copy of package ‘FlyingFox’
+
+Checking out 0.16.0 of package ‘FlyingFox’
+
+Creating working copy of package ‘SwiftSoup’
+
+Checking out 2.6.1 of package ‘SwiftSoup’
+
+Creating working copy of package ‘swift-syntax’
+
+Checking out 600.0.1 of package ‘swift-syntax’
+
+Creating working copy of package ‘SnapshotPreviews’
+
+Checking out main (1b3bd9b) of package ‘SnapshotPreviews’
+
+Creating working copy of package ‘sentry-cocoa’
+
+Checking out 9.0.0-alpha.1 of package ‘sentry-cocoa’
+
+Creating working copy of package ‘AccessibilitySnapshotios26’
+
+Checking out main (2e2ece6) of package ‘AccessibilitySnapshotios26’
+
+Creating working copy of package ‘SimpleDebugger’
+
+Checking out e0ad1cd304132efa0ab3b4707bd0eea761dbe2b5 of package ‘SimpleDebugger’
+
+
+Resolved source packages:
+  SnapshotPreviews: https://github.com/EmergeTools/SnapshotPreviews @ main (1b3bd9b)
+  FaultOrdering: https://github.com/getsentry/faultordering @ main (8c61bbe)
+  swift-snapshot-testing: https://github.com/pointfreeco/swift-snapshot-testing @ 1.17.6
+  Sentry: https://github.com/getsentry/sentry-cocoa @ 9.0.0-alpha.1
+  swift-syntax: https://github.com/swiftlang/swift-syntax @ 600.0.1
+  iOSSnapshotTestCase: https://github.com/uber/ios-snapshot-test-case.git @ 8.0.0
+  ETDistribution: https://github.com/EmergeTools/ETDistribution.git @ 0.2.1
+  SwiftSoup: https://github.com/scinfu/SwiftSoup @ 2.6.1
+  FlyingFox: https://github.com/swhitty/FlyingFox.git @ 0.16.0
+  SimpleDebugger: https://github.com/EmergeTools/SimpleDebugger @ e0ad1cd
+  Reaper: https://github.com/EmergeTools/Reaper @ 1.6.0
+  Fonts: /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/sut/HackerNews/ios/Packages/Fonts @ local
+  Common: /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/sut/HackerNews/ios/Packages/Common @ local
+  AccessibilitySnapshot: https://github.com/EmergeTools/AccessibilitySnapshotios26 @ main (2e2ece6)
+
+resolved source packages: SnapshotPreviews, FaultOrdering, swift-snapshot-testing, Sentry, swift-syntax, iOSSnapshotTestCase, ETDistribution, SwiftSoup, FlyingFox, SimpleDebugger, Reaper, Fonts, Common, AccessibilitySnapshot
+
+
+STDERR:
+

@@ -1,0 +1,19 @@
+# Summary
+
+Cost interpretation:
+- `cost_*` = billed cost (includes cache discounts and any upfront tool schema overhead).
+- `cold_cost_*` = cold-equivalent cost (treat cached reads as uncached for like-for-like A/B/C comparisons).
+- `summary_cold.*` (when enabled) filters to runs where `cached_read_tokens == 0`.
+
+MCP vs shell comparison:
+- Use `cost_*` for overall cost (includes MCP schema overhead).
+- Use `cold_cost_*` or `summary_cold.*` for like-for-like cost.
+- Use `marginal_cost_usd` for work-only cost (baseline subtracted).
+
+| agent_id | scenario | task_id | task_kind | runs | success_rate | time_median | time_p90 | time_cv | cost_median | cost_p90 | cost_cv | cold_cost_median | cold_cost_p90 | cold_cost_cv | cache_savings_mean | cache_read_rate_mean | pass_at_3 | pass_pow_3 | cost_per_success_mean | xcodebuild_calls_mean | xcrun_calls_mean | simctl_calls_mean | mcp_tool_calls_mean | time_to_first_xcodebuild_mean | time_to_first_mcp_build_mean | xcodebuild_repeat_mean | destination_count_mean | destination_churn_mean | tool_error_mean | tool_error_mcp_mean | tool_error_non_mcp_mean |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| droid-minimax | shell_primed | feature_from_task_md_fix_tests | capability | 1 | 0.0% | 0.0 | 0.0 |  |  |  |  |  |  |  |  |  | 0.0% | 0.0% |  | 0.000000 | 0.000000 | 0.000000 | 0.000000 |  |  | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
+| droid-minimax | shell_primed | hn_api_cache_ttl | capability | 1 | 100.0% | 362.4 | 362.4 |  | 0.000000 | 0.000000 |  | 0.000000 | 0.000000 |  | 0.000000 | 87.8% | 100.0% | 100.0% | 0.000000 | 7.000000 | 3.000000 | 3.000000 | 0.000000 | 164.7 |  | 3.000000 | 2.000000 | 1.000000 | 0.000000 | 0.000000 | 0.000000 |
+| droid-minimax | shell_primed | hn_offline_api_refactor | capability | 1 | 0.0% | 0.0 | 0.0 |  |  |  |  |  |  |  |  |  | 0.0% | 0.0% |  | 0.000000 | 0.000000 | 0.000000 | 0.000000 |  |  | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
+| droid-minimax | shell_primed | hn_settings_deeplink | capability | 1 | 100.0% | 477.0 | 477.0 |  | 0.000000 | 0.000000 |  | 0.000000 | 0.000000 |  | 0.000000 | 89.2% | 100.0% | 100.0% | 0.000000 | 4.000000 | 16.000000 | 15.000000 | 0.000000 | 117.4 |  | 1.000000 | 1.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
+| droid-minimax | shell_primed | smoke_build_install_launch | regression | 1 | 0.0% | 480.2 | 480.2 |  |  |  |  |  |  |  |  |  | 0.0% | 0.0% |  | 13.000000 | 22.000000 | 19.000000 | 0.000000 | 102.2 |  | 9.000000 | 2.000000 | 1.000000 | 0.000000 | 0.000000 | 0.000000 |

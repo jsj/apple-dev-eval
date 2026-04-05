@@ -1,0 +1,79 @@
+{
+  "version": "0.1.0",
+  "id": "ce3fba94-d18b-40ec-a6f7-751560ae366c",
+  "timestamp": "2026-04-05T14:16:45.461260+00:00",
+  "tool": {
+    "name": "xcodebuildmcp_eval",
+    "version": "v2"
+  },
+  "files": [
+    {
+      "path": "runs/20260405_141445/benchmark_review_input.json",
+      "conversations": [
+        {
+          "url": "file:///Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260405_141445/trials/droid-minimax-shell_primed-smoke_build_install_launch-trial-1775398488632/transcript.txt",
+          "contributor": {
+            "type": "ai",
+            "model_id": "minimax/minimax-m2.7-highspeed"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 35
+            }
+          ],
+          "related": [
+            {
+              "type": "benchmark-summary",
+              "url": "file:///Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260405_141445/summary.md"
+            },
+            {
+              "type": "run-record",
+              "url": "file:///Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260405_141445/runs.jsonl"
+            },
+            {
+              "type": "command-trace",
+              "url": "file:///Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260405_141445/trials/droid-minimax-shell_primed-smoke_build_install_launch-trial-1775398488632/cmd_log.jsonl"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "benchmark": {
+      "agent_id": "droid-minimax",
+      "scenario": "shell_primed",
+      "task_id": "smoke_build_install_launch",
+      "success": true,
+      "wall_time_sec": 113.8724958896637,
+      "xcodebuild_calls": 4,
+      "xcrun_calls": 6,
+      "simctl_calls": 5,
+      "mcp_tool_calls": 0,
+      "tool_error_total": 0,
+      "uncached_input_tokens": 8227,
+      "cached_read_tokens": 17014,
+      "output_tokens": 690,
+      "cache_read_rate": 0.3522494358294859,
+      "time_to_first_xcodebuild_sec": 49.694088,
+      "xcodebuild_repeat_count": 1,
+      "destination_count": 1,
+      "destination_churn": 0,
+      "bundle_id": "com.emergetools.hackernews",
+      "target_simulator": "iPhone 17 Pro",
+      "target_udid": "BEDDE8E2-8D1C-4730-B7E6-AE8F163759AB",
+      "launch_pid": 76782
+    },
+    "review_request": {
+      "goal": "Find the main contributors to the 113.9s shell_primed smoke runtime versus the target ~60s benchmark and propose the highest-leverage improvements.",
+      "focus_areas": [
+        "prompt and agent loop overhead before first build",
+        "extra direct xcodebuild/xcrun usage before xc invocation",
+        "duplicate destination discovery",
+        "avoidable build-system or simulator latency",
+        "ways to preserve zero tool errors while reducing time and tokens"
+      ]
+    }
+  }
+}

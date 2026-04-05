@@ -1,0 +1,32 @@
+CMD: xcodebuild -resolvePackageDependencies -project /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/sut/HackerNews/ios/HackerNews.xcodeproj -scheme HackerNews -clonedSourcePackagesDirPath /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/spm_cache
+
+rc=0
+
+STDOUT:
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -resolvePackageDependencies -project /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/sut/HackerNews/ios/HackerNews.xcodeproj -scheme HackerNews -clonedSourcePackagesDirPath /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/spm_cache
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  Sentry: https://github.com/getsentry/sentry-cocoa @ 9.0.0-alpha.1
+  AccessibilitySnapshot: https://github.com/EmergeTools/AccessibilitySnapshotios26 @ main (2e2ece6)
+  FaultOrdering: https://github.com/getsentry/faultordering @ main (8c61bbe)
+  swift-snapshot-testing: https://github.com/pointfreeco/swift-snapshot-testing @ 1.17.6
+  SnapshotPreviews: https://github.com/EmergeTools/SnapshotPreviews @ main (1b3bd9b)
+  SwiftSoup: https://github.com/scinfu/SwiftSoup @ 2.6.1
+  swift-syntax: https://github.com/swiftlang/swift-syntax @ 600.0.1
+  iOSSnapshotTestCase: https://github.com/uber/ios-snapshot-test-case.git @ 8.0.0
+  Reaper: https://github.com/EmergeTools/Reaper @ 1.6.0
+  ETDistribution: https://github.com/EmergeTools/ETDistribution.git @ 0.2.1
+  FlyingFox: https://github.com/swhitty/FlyingFox.git @ 0.16.0
+  Common: /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/sut/HackerNews/ios/Packages/Common @ local
+  Fonts: /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/sut/HackerNews/ios/Packages/Fonts @ local
+  SimpleDebugger: https://github.com/EmergeTools/SimpleDebugger @ e0ad1cd
+
+resolved source packages: Sentry, AccessibilitySnapshot, FaultOrdering, swift-snapshot-testing, SnapshotPreviews, SwiftSoup, swift-syntax, iOSSnapshotTestCase, Reaper, ETDistribution, FlyingFox, Common, Fonts, SimpleDebugger
+
+
+STDERR:
+

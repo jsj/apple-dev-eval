@@ -1,0 +1,64 @@
+## COMMAND
+['claude', '--model', 'claude-opus-4-5-20251101', '-p', '--output-format', 'stream-json', '--include-partial-messages', '--disable-slash-commands', '--setting-sources', 'local', '--verbose', '--no-session-persistence', '--permission-mode', 'bypassPermissions', '--', 'Generate a concise post-run report on tool errors.\n\nManifest: /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_230242/tool_error_report_manifest.json\nWrite report to: /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_230242/tool_error_report.md\n\nRequirements:\n- Summarize tool errors by agent/scenario.\n- For each error with context, note whether follow-up calls repeat the same command/tool or change parameters (possible agent correction).\n- Call out likely agent mistakes vs transient/environmental failures.\n- Do not run builds/tests; only read files.\n- Keep it short and actionable.\nThen exit.\n']
+
+## START 2026-04-04T23:11:00.791093+00:00
+## transcript_mode=minimal
+
+TOOL_CALL Read {"file_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_230242/tool_error_report_manifest.json"}
+TOOL_RESULT toolu_01EACfpmSji5hZC4QYxe4Tyo 1	{
+2	  "generated_at": "2026-04-04T23:11:00.790009+00:00",
+3	  "run_dir": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_230242",
+4	  "runs_csv": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_230242/runs.csv",
+5	  "summary_csv": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_230242/summary.csv",
+6	  "total_runs": 1,
+7	  "runs_with_errors": 0,
+8	  "runs_with_real_errors": 0,
+9	  "runs_without_errors": 1,
+10	  "error_rate_percent": 0.0,
+11	  "real_error_rate_percent": 0.0,
+12	  "total_runs_by_agent": {
+13	    "droid-minimax": 1
+14	  },
+15	  "runs_with_errors_by_agent": {},
+16	  "runs_with_real_errors_by_agent": {},
+17	  "errors_by_scenario": {
+18	    "shell_unprimed": {
+19	      "total": 0,
+20	      "mcp": 0,
+21	      "non_mcp": 0,
+22	      "session_defaults": 0,
+23	      "sibling_cascade": 0,
+24	      "build_test_failure": 0,
+25	      "real_errors": 0
+26	    }
+27	  },
+28	  "error_classification": {
+29	    "total_errors": 0,
+30	    "session_defaults": 0,
+31	    "sibling_cascade": 0,
+32	    "build_test_failure": 0,
+33	    "real_errors": 0,
+34	    "excluded_errors": 0,
+35	    "exclusion_note": "session_defaults: Expected MCP discovery workflow. sibling_cascade: Caused by sibling tool failure. build_test_failure: Tool worked correctly, reported build/test error."
+36	  },
+37	  "adjusted_by_agent": {
+38	    "droid-minimax": {
+39	      "trials": 1,
+40	      "real_errors": 0
+41	    }
+42	  },
+43	  "mcp_discovery_errors": 0,
+44	  "total_mcp_errors": 0,
+45	  "adjusted_mcp_errors": 0,
+46	  "entries": []
+47	}
+
+<system-reminder>
+Whenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.
+</system-reminder>
+ASSISTANT: No tool errors in this run. Writing the report.
+TOOL_CALL Write {"file_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_230242/tool_error_report.md", "content": "# Tool Error Report\n\n**Run:** 2026-04-04T23:10  \n**Agent:** droid-minimax  \n**Scenario:** shell_unprimed  \n\n## Summary\n\n| Metric | Value |\n|--------|-------|\n| Total runs | 1 |\n| Runs with errors | 0 |\n| Error rate | 0% |\n\n## Analysis\n\nNo tool errors occurred during this run. The agent completed the trial without any failed tool calls.\n\n---\n*Generated from tool_error_report_manifest.json*\n"}
+TOOL_RESULT toolu_0175VUT4j6Jm5JFjqoFBNjGM File created successfully at: /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_230242/tool_error_report.md
+ASSISTANT: Report written to `tool_error_report.md`. No errors to analyze in this run (1 trial, 0 errors).
+RESULT {"subtype": "success", "is_error": false, "duration_ms": 12062, "total_cost_usd": 0.105745}
+RESULT_TEXT: Report written to `tool_error_report.md`. No errors to analyze in this run (1 trial, 0 errors).

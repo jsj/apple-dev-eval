@@ -1,0 +1,32 @@
+CMD: xcodebuild -resolvePackageDependencies -project /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/sut/HackerNews/ios/HackerNews.xcodeproj -scheme HackerNews -clonedSourcePackagesDirPath /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/spm_cache
+
+rc=0
+
+STDOUT:
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -resolvePackageDependencies -project /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/sut/HackerNews/ios/HackerNews.xcodeproj -scheme HackerNews -clonedSourcePackagesDirPath /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/spm_cache
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  Fonts: /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/sut/HackerNews/ios/Packages/Fonts @ local
+  Reaper: https://github.com/EmergeTools/Reaper @ 1.6.0
+  Sentry: https://github.com/getsentry/sentry-cocoa @ 9.0.0-alpha.1
+  FlyingFox: https://github.com/swhitty/FlyingFox.git @ 0.16.0
+  SimpleDebugger: https://github.com/EmergeTools/SimpleDebugger @ e0ad1cd
+  swift-syntax: https://github.com/swiftlang/swift-syntax @ 600.0.1
+  swift-snapshot-testing: https://github.com/pointfreeco/swift-snapshot-testing @ 1.17.6
+  ETDistribution: https://github.com/EmergeTools/ETDistribution.git @ 0.2.1
+  iOSSnapshotTestCase: https://github.com/uber/ios-snapshot-test-case.git @ 8.0.0
+  AccessibilitySnapshot: https://github.com/EmergeTools/AccessibilitySnapshotios26 @ main (2e2ece6)
+  Common: /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/sut/HackerNews/ios/Packages/Common @ local
+  FaultOrdering: https://github.com/getsentry/faultordering @ main (8c61bbe)
+  SwiftSoup: https://github.com/scinfu/SwiftSoup @ 2.6.1
+  SnapshotPreviews: https://github.com/EmergeTools/SnapshotPreviews @ main (1b3bd9b)
+
+resolved source packages: Fonts, Reaper, Sentry, FlyingFox, SimpleDebugger, swift-syntax, swift-snapshot-testing, ETDistribution, iOSSnapshotTestCase, AccessibilitySnapshot, Common, FaultOrdering, SwiftSoup, SnapshotPreviews
+
+
+STDERR:
+

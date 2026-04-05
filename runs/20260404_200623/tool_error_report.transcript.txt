@@ -1,0 +1,140 @@
+## COMMAND
+['claude', '--model', 'claude-opus-4-5-20251101', '-p', '--output-format', 'stream-json', '--include-partial-messages', '--disable-slash-commands', '--setting-sources', 'local', '--verbose', '--no-session-persistence', '--permission-mode', 'bypassPermissions', '--', 'Generate a concise post-run report on tool errors.\n\nManifest: /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/tool_error_report_manifest.json\nWrite report to: /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/tool_error_report.md\n\nRequirements:\n- Summarize tool errors by agent/scenario.\n- For each error with context, note whether follow-up calls repeat the same command/tool or change parameters (possible agent correction).\n- Call out likely agent mistakes vs transient/environmental failures.\n- Do not run builds/tests; only read files.\n- Keep it short and actionable.\nThen exit.\n']
+
+## START 2026-04-04T20:10:20.946736+00:00
+## transcript_mode=minimal
+
+TOOL_CALL Read {"file_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/tool_error_report_manifest.json"}
+TOOL_RESULT toolu_0138PdfJgR1hmfphF2jmRubm 1	{
+2	  "generated_at": "2026-04-04T20:10:20.945507+00:00",
+3	  "run_dir": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623",
+4	  "runs_csv": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/runs.csv",
+5	  "summary_csv": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/summary.csv",
+6	  "total_runs": 2,
+7	  "runs_with_errors": 1,
+8	  "runs_with_real_errors": 1,
+9	  "runs_without_errors": 1,
+10	  "error_rate_percent": 50.0,
+11	  "real_error_rate_percent": 50.0,
+12	  "total_runs_by_agent": {
+13	    "droid-minimax": 1,
+14	    "codex": 1
+15	  },
+16	  "runs_with_errors_by_agent": {
+17	    "codex": 1
+18	  },
+19	  "runs_with_real_errors_by_agent": {
+20	    "codex": 1
+21	  },
+22	  "errors_by_scenario": {
+23	    "shell_primed": {
+24	      "total": 6,
+25	      "mcp": 0,
+26	      "non_mcp": 6,
+27	      "session_defaults": 0,
+28	      "sibling_cascade": 0,
+29	      "build_test_failure": 0,
+30	      "real_errors": 6
+31	    }
+32	  },
+33	  "error_classification": {
+34	    "total_errors": 6,
+35	    "session_defaults": 0,
+36	    "sibling_cascade": 0,
+37	    "build_test_failure": 0,
+38	    "real_errors": 6,
+39	    "excluded_errors": 0,
+40	    "exclusion_note": "session_defaults: Expected MCP discovery workflow. sibling_cascade: Caused by sibling tool failure. build_test_failure: Tool worked correctly, reported build/test error."
+41	  },
+42	  "adjusted_by_agent": {
+43	    "droid-minimax": {
+44	      "trials": 1,
+45	      "real_errors": 0
+46	    },
+47	    "codex": {
+48	      "trials": 1,
+49	      "real_errors": 6
+50	    }
+51	  },
+52	  "mcp_discovery_errors": 0,
+53	  "total_mcp_errors": 0,
+54	  "adjusted_mcp_errors": 6,
+55	  "entries": [
+56	    {
+57	      "run_id": "codex-shell_primed-smoke_build_install_launch-trial-1775333199182",
+58	      "agent_id": "codex",
+59	      "scenario": "shell_primed",
+60	      "task_id": "smoke_build_install_launch",
+61	      "baseline_run": false,
+6...(truncated)
+TOOL_CALL Read {"file_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/trials/codex-shell_primed-smoke_build_install_launch-trial-1775333199182/tool_errors.jsonl"}
+TOOL_RESULT toolu_01P3wmVXSC2ybZPfN42Epfza 1	{"ts": "2026-04-04T20:08:21.994231Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "payload": "{\"exit_code\": 2, \"status\": \"failed\"}"}
+2	{"ts": "2026-04-04T20:08:31.420182Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "payload": "{\"exit_code\": 2, \"status\": \"failed\"}"}
+3	{"ts": "2026-04-04T20:08:35.287268Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "payload": "{\"exit_code\": 70, \"status\": \"failed\"}"}
+4	{"ts": "2026-04-04T20:09:13.654788Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "payload": "{\"exit_code\": 5, \"status\": \"failed\"}"}
+5	{"ts": "2026-04-04T20:09:41.999778Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "payload": "{\"exit_code\": 1, \"status\": \"failed\"}"}
+6	{"ts": "2026-04-04T20:09:44.529070Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "payload": "{\"exit_code\": -1, \"status\": \"failed\"}"}
+7	
+
+<system-reminder>
+Whenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.
+</system-reminder>
+TOOL_CALL Read {"file_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/trials/codex-shell_primed-smoke_build_install_launch-trial-1775333199182/tool_error_context.jsonl"}
+TOOL_RESULT toolu_01Y4An9GizkULaW8N2qaZTBD 1	{"ts": "2026-04-04T20:08:21.994231Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "payload": "{\"exit_code\": 2, \"status\": \"failed\"}", "context": [{"ts": "2026-04-04T20:08:22.010930Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "input": {"command": "/bin/zsh -lc 'xc help project --json'"}}, {"ts": "2026-04-04T20:08:31.417801Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "input": {"command": "/bin/zsh -lc 'xc help apps --json'"}}]}
+2	{"ts": "2026-04-04T20:08:31.420182Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "payload": "{\"exit_code\": 2, \"status\": \"failed\"}", "context": [{"ts": "2026-04-04T20:08:31.584616Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "input": {"command": "/bin/zsh -lc \"pgrep -af 'xc dev run|xcodebuild|Simulator.app|CoreSimulator'\""}}, {"ts": "2026-04-04T20:08:35.285870Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "input": {"command": "/bin/zsh -lc 'xc project --json'"}}]}
+3	{"ts": "2026-04-04T20:08:35.287268Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "payload": "{\"exit_code\": 70, \"status\": \"failed\"}", "context": [{"ts": "2026-04-04T20:08:46.625667Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "input": {"command": "/bin/zsh -lc 'xc help dev launch --json'"}}, {"ts": "2026-04-04T20:08:46.635087Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "input": {"command": "/bin/zsh -lc 'xc help runtime simulator install --json'"}}]}
+4	{"ts": "2026-04-04T20:09:13.654788Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "payload": "{\"exit_code\": 5, \"status\": \"failed\"}", "context": [{"ts": "2026-04-04T20:09:24.154814Z", "tool_name": "bash", "tool_kind": "non_mcp", "source": "codex", "input": {"command": "/bin/zsh -lc 'xc help dev stop --json'"}}, {"ts": "2026-04-04T20:09:30.036221Z", "tool_name": "bash", "tool_kind": "non_mcp", "sou...(truncated)
+ASSISTANT: Now I have all the information. Let me write the report.
+TOOL_CALL Write {"file_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/tool_error_report.md", "content": "# Tool Error Report\n\n**Run:** 2026-04-04T20:10:20Z  \n**Total Runs:** 2 | **Runs with Errors:** 1 (50%)\n\n## Summary by Agent\n\n| Agent | Trials | Errors | Error Type |\n|-------|--------|--------|------------|\n| codex | 1 | 6 | bash (non-MCP) |\n| droid-minimax | 1 | 0 | — |\n\n## Error Analysis: codex / shell_primed\n\n**Task:** smoke_build_install_launch  \n**6 consecutive bash failures** — all related to `xc` CLI misuse.\n\n### Error Sequence\n\n| # | Exit | Command | Classification |\n|---|------|---------|----------------|\n| 1 | 2 | `xc help project --json` | Agent mistake — invalid help syntax |\n| 2 | 2 | `xc help apps --json` | Agent mistake — invalid help syntax |\n| 3 | 70 | `xc project --json` | Agent mistake — missing context/args |\n| 4 | 5 | (xc subcommand) | Likely CLI error |\n| 5 | 1 | `pgrep -af '...'` | Benign — no matching processes found |\n| 6 | -1 | `xc dev run ... --json` | Timeout or signal |\n\n### Correction Behavior\n\n**One correction attempt observed:**  \nAfter error #6 (`xc dev run ... --json` failed with exit -1), agent retried with `--no-console` flag added — indicates adaptive behavior, but too late in the sequence.\n\n**No corrections for early errors:**  \nErrors 1-3 show the agent probing `xc help <topic>` syntax incorrectly multiple times without adjusting approach. Agent moved on rather than fixing the pattern.\n\n## Conclusions\n\n| Category | Count | Notes |\n|----------|-------|-------|\n| **Agent mistakes** | 4 | Incorrect `xc` CLI syntax (help subcommands, missing args) |\n| **Benign/expected** | 1 | `pgrep` exit 1 = no matches |\n| **Environmental** | 1 | Exit -1 suggests timeout or process interruption |\n\n### Actionable Items\n\n1. **Codex needs `xc` CLI priming** — agent does not know valid `xc` subcommand syntax; consider adding CLI reference to system prompt for shell_primed scenario\n2. **Help exploration pattern is wasteful** — 3 consecutive failures probing help topics; agent should fallback to `xc --help` or documentation faster\n3. **droid-minimax succeeded** — compare approaches to identify what codex missed\n"}
+TOOL_RESULT toolu_01P1tBUHUpWmpCFbQEXbPdBp ERROR <tool_use_error>File has not been read yet. Read it first before writing to it.</tool_use_error>
+TOOL_CALL Read {"file_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/tool_error_report.md"}
+TOOL_RESULT toolu_013qamvyowv3V8YsmFh4aKkW 1	# Tool Error Report
+2	
+3	**Run:** 2026-04-04T20:06:39Z  
+4	**Agent:** droid-minimax  
+5	**Scenario:** shell_primed
+6	
+7	## Summary
+8	
+9	| Metric | Value |
+10	|--------|-------|
+11	| Total Runs | 1 |
+12	| Runs with Errors | 0 |
+13	| Real Errors | 0 |
+14	| Error Rate | 0.0% |
+15	
+16	## Analysis
+17	
+18	**No tool errors recorded in this run.**
+19	
+20	The single trial completed successfully without any:
+21	- MCP tool failures
+22	- Session/discovery errors
+23	- Build/test failures
+24	- Agent mistakes
+25	
+26	## Recommendations
+27	
+28	None required - clean run.
+29	
+
+<system-reminder>
+Whenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.
+</system-reminder>
+TOOL_CALL Write {"file_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/tool_error_report.md", "content": "# Tool Error Report\n\n**Run:** 2026-04-04T20:10:20Z  \n**Total Runs:** 2 | **Runs with Errors:** 1 (50%)\n\n## Summary by Agent\n\n| Agent | Trials | Errors | Error Type |\n|-------|--------|--------|------------|\n| codex | 1 | 6 | bash (non-MCP) |\n| droid-minimax | 1 | 0 | — |\n\n## Error Analysis: codex / shell_primed\n\n**Task:** smoke_build_install_launch  \n**6 consecutive bash failures** — all related to `xc` CLI misuse.\n\n### Error Sequence\n\n| # | Exit | Command | Classification |\n|---|------|---------|----------------|\n| 1 | 2 | `xc help project --json` | Agent mistake — invalid help syntax |\n| 2 | 2 | `xc help apps --json` | Agent mistake — invalid help syntax |\n| 3 | 70 | `xc project --json` | Agent mistake — missing context/args |\n| 4 | 5 | (xc subcommand) | Likely CLI error |\n| 5 | 1 | `pgrep -af '...'` | Benign — no matching processes found |\n| 6 | -1 | `xc dev run ... --json` | Timeout or signal |\n\n### Correction Behavior\n\n**One correction attempt observed:**  \nAfter error #6 (`xc dev run ... --json` failed with exit -1), agent retried with `--no-console` flag added — indicates adaptive behavior, but too late in the sequence.\n\n**No corrections for early errors:**  \nErrors 1-3 show the agent probing `xc help <topic>` syntax incorrectly multiple times without adjusting approach. Agent moved on rather than fixing the pattern.\n\n## Conclusions\n\n| Category | Count | Notes |\n|----------|-------|-------|\n| **Agent mistakes** | 4 | Incorrect `xc` CLI syntax (help subcommands, missing args) |\n| **Benign/expected** | 1 | `pgrep` exit 1 = no matches |\n| **Environmental** | 1 | Exit -1 suggests timeout or process interruption |\n\n### Actionable Items\n\n1. **Codex needs `xc` CLI priming** — agent does not know valid `xc` subcommand syntax; consider adding CLI reference to system prompt for shell_primed scenario\n2. **Help exploration pattern is wasteful** — 3 consecutive failures probing help topics; agent should fallback to `xc --help` or documentation faster\n3. **droid-minimax succeeded** — compare approaches to identify what codex missed\n"}
+TOOL_RESULT toolu_01PqM6TM6iRnYMihJfn5zCNZ The file /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_200623/tool_error_report.md has been updated successfully.
+ASSISTANT: Report written to `tool_error_report.md`.
+
+**Key findings:**
+- **codex** had 6 bash errors (all `xc` CLI misuse) — agent repeatedly tried invalid help syntax without self-correcting
+- **droid-minimax** had zero errors
+- 4 were agent mistakes, 1 benign (`pgrep` no-match), 1 environmental (timeout/signal)
+- Only one correction attempt observed (adding `--no-console` after timeout)
+RESULT {"subtype": "success", "is_error": false, "duration_ms": 52066, "total_cost_usd": 0.17032599999999998}
+RESULT_TEXT: Report written to `tool_error_report.md`.
+
+**Key findings:**
+- **codex** had 6 bash errors (all `xc` CLI misuse) — agent repeatedly tried invalid help syntax without self-correcting
+- **droid-minimax** had zero errors
+- 4 were agent mistakes, 1 benign (`pgrep` no-match), 1 environmental (timeout/signal)
+- Only one correction attempt observed (adding `--no-console` after timeout)

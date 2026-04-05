@@ -148,6 +148,23 @@ def reset_simulator_app_state(udid: str, bundle_id: str) -> None:
     run_cmd(["xcrun", "simctl", "uninstall", udid, bundle_id], timeout=120)
 
 
+def shutdown_non_target_simulators(target_udid: str) -> None:
+    """Shut down all booted simulators except the target to prevent ambiguity."""
+    rc, out, _ = run_cmd(["xcrun", "simctl", "list", "devices", "-j"], timeout=30)
+    if rc != 0:
+        return
+    try:
+        obj = json.loads(out)
+    except Exception:
+        return
+    for _, devs in obj.get("devices", {}).items():
+        for dev in devs:
+            if dev.get("state") == "Booted" and dev.get("udid") != target_udid:
+                run_cmd(
+                    ["xcrun", "simctl", "shutdown", dev["udid"]], timeout=30
+                )
+
+
 def scrub_env(env: Optional[Dict[str, str]]) -> Dict[str, str]:
     """Redact sensitive values from environment dict for logging."""
     if not env:

@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-04-04T21:30:22.491742+00:00",
+  "run_dir": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_213005",
+  "runs_csv": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_213005/runs.csv",
+  "summary_csv": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_213005/summary.csv",
+  "total_runs": 2,
+  "runs_with_errors": 0,
+  "runs_with_real_errors": 0,
+  "runs_without_errors": 2,
+  "error_rate_percent": 0.0,
+  "real_error_rate_percent": 0.0,
+  "total_runs_by_agent": {
+    "droid-minimax": 2
+  },
+  "runs_with_errors_by_agent": {},
+  "runs_with_real_errors_by_agent": {},
+  "errors_by_scenario": {
+    "shell_unprimed": {
+      "total": 0,
+      "mcp": 0,
+      "non_mcp": 0,
+      "session_defaults": 0,
+      "sibling_cascade": 0,
+      "build_test_failure": 0,
+      "real_errors": 0
+    },
+    "shell_primed": {
+      "total": 0,
+      "mcp": 0,
+      "non_mcp": 0,
+      "session_defaults": 0,
+      "sibling_cascade": 0,
+      "build_test_failure": 0,
+      "real_errors": 0
+    }
+  },
+  "error_classification": {
+    "total_errors": 0,
+    "session_defaults": 0,
+    "sibling_cascade": 0,
+    "build_test_failure": 0,
+    "real_errors": 0,
+    "excluded_errors": 0,
+    "exclusion_note": "session_defaults: Expected MCP discovery workflow. sibling_cascade: Caused by sibling tool failure. build_test_failure: Tool worked correctly, reported build/test error."
+  },
+  "adjusted_by_agent": {
+    "droid-minimax": {
+      "trials": 2,
+      "real_errors": 0
+    }
+  },
+  "mcp_discovery_errors": 0,
+  "total_mcp_errors": 0,
+  "adjusted_mcp_errors": 0,
+  "entries": []
+}

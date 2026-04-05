@@ -366,22 +366,37 @@ def build_prompt(
     Only shell_primed includes build parameters in the prompt.
     MCP scenarios include a hint to prefer MCP tools.
     """
-    if scenario in ("mcp_unprimed", "mcp_unprimed_v2"):
-        return (
-            task_prompt.strip()
-            + "\n\nIf XcodeBuildMCP tools are available, prefer them for build/test/"
-            "install/launch. Use raw xcodebuild/xcrun only if the MCP tool cannot "
-            "perform the task.\n"
-        )
-    if scenario != "shell_primed":
-        return task_prompt.strip() + "\n"
-
-    # shell_primed: add deterministic build params for shell usage.
     lines = [
         task_prompt.strip(),
         "",
-        "Build parameters (provided):",
+        "Critical execution rules:",
+        f"- Treat `{simulator_name}` as the only valid target simulator.",
+        f"- Resolve the exact device UDID for `{simulator_name}` before the first build/install/launch step and reuse that same UDID throughout.",
+        "- Never target similarly named devices and never use `booted` as a simulator identifier.",
+        "- Use `xc dev run --simulator --json` to build+install+launch in one command. Do NOT use raw `xcodebuild`, `xcrun`, or `simctl` directly.",
+        "- Do NOT decompose build/install/launch into separate steps. `xc dev run` handles everything.",
+        "- Exit immediately after the success criteria are met; do not keep exploring once install+launch succeeds.",
     ]
+
+    if scenario in ("mcp_unprimed", "mcp_unprimed_v2"):
+        lines.extend(
+            [
+                "",
+                "MCP guidance:",
+                "- If XcodeBuildMCP tools are available, prefer them for build/test/install/launch.",
+                "- Even when using MCP, verify the selected simulator matches the resolved UDID before each install/launch action.",
+                "- Use raw xcodebuild/xcrun only if the MCP tool cannot perform the task.",
+            ]
+        )
+        return "\n".join(lines) + "\n"
+
+    if scenario != "shell_primed":
+        return "\n".join(lines) + "\n"
+
+    lines.extend([
+        "",
+        "Build parameters (provided):",
+    ])
     for k in [
         "workspace",
         "project",
@@ -427,19 +442,6 @@ set -euo pipefail
 source_tag="agent"
 if [ "${{EVAL_MCP_PROCESS:-}}" = "1" ]; then
   source_tag="mcp"
-else
-  # Fallback: detect MCP parent process if env var is missing.
-  ppid="$PPID"
-  depth=0
-  while [ -n "$ppid" ] && [ "$ppid" -gt 1 ] && [ "$depth" -lt 6 ]; do
-    cmdline="$(ps -p "$ppid" -o command= 2>/dev/null || true)"
-    if echo "$cmdline" | grep -Ei "xcodebuildmcp" >/dev/null 2>&1; then
-      source_tag="mcp"
-      break
-    fi
-    ppid="$(ps -p "$ppid" -o ppid= 2>/dev/null | tr -d ' ')"
-    depth=$((depth+1))
-  done
 fi
 ts="$(python3 - <<'PY'\nimport datetime; print(datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00','Z'))\nPY\n)"
 argv_json="$(python3 - "$@" <<'PY'\nimport json,sys; print(json.dumps(sys.argv[1:]))\nPY\n)"
@@ -545,9 +547,14 @@ class TemplateCommandAgent(AgentAdapter):
     ) -> Tuple[int, Optional[Dict[str, Any]], Optional[str]]:
         cmd: List[str] = []
         extra_args = shlex.split(env.get("EVAL_AGENT_EXTRA_ARGS", ""))
+        settings_path = env.get("EVAL_AGENT_SETTINGS", "")
         for token in self.cfg.command:
             if token == "{EXTRA_ARGS}":
                 cmd.extend(extra_args)
+                continue
+            if token == "{SETTINGS}":
+                if settings_path:
+                    cmd.append(settings_path)
                 continue
             cmd.append(self._subst(token, prompt, workdir, out_json))
 
@@ -948,10 +955,12 @@ class TemplateCommandAgent(AgentAdapter):
     def _subst(
         s: str, prompt: str, workdir: pathlib.Path, out_json: pathlib.Path
     ) -> str:
+        settings_path = os.environ.get("EVAL_AGENT_SETTINGS", "")
         return (
             s.replace("{PROMPT}", prompt)
             .replace("{WORKDIR}", str(workdir))
             .replace("{OUT_JSON}", str(out_json))
+            .replace("{SETTINGS}", settings_path)
         )
 
 

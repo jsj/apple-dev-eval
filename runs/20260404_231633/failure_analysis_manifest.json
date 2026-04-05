@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-04-04T23:25:30.780835+00:00",
+  "run_dir": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_231633",
+  "total_failures": 1,
+  "runs_jsonl": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_231633/runs.jsonl",
+  "entries": [
+    {
+      "run_id": "droid-minimax-shell_unprimed-smoke_build_install_launch-trial-1775344617168",
+      "agent_id": "droid-minimax",
+      "scenario": "shell_unprimed",
+      "task_id": "smoke_build_install_launch",
+      "success": false,
+      "failure_reason": "timeout_hard",
+      "exit_code": 124,
+      "wall_time_sec": 480.0763192176819,
+      "grader_results": [
+        {
+          "type": "ios_install_check",
+          "ok": true,
+          "reason": null,
+          "duration_sec": 0.759
+        },
+        {
+          "type": "ios_launch_check",
+          "ok": true,
+          "reason": null,
+          "duration_sec": 0.872
+        }
+      ],
+      "tool_error_total": 0,
+      "tool_error_mcp": 0,
+      "tool_error_non_mcp": 0,
+      "transcript_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_231633/trials/droid-minimax-shell_unprimed-smoke_build_install_launch-trial-1775344617168/transcript.txt",
+      "tool_error_log_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_231633/trials/droid-minimax-shell_unprimed-smoke_build_install_launch-trial-1775344617168/tool_errors.jsonl",
+      "tool_error_context_log_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_231633/trials/droid-minimax-shell_unprimed-smoke_build_install_launch-trial-1775344617168/tool_error_context.jsonl",
+      "command_log_path": "/Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/runs/20260404_231633/trials/droid-minimax-shell_unprimed-smoke_build_install_launch-trial-1775344617168/cmd_log.jsonl",
+      "mcp_tool_log_path": null
+    }
+  ]
+}

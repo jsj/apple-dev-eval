@@ -26,6 +26,7 @@ from evals.infrastructure import (
     resolve_developer_dir,
     ensure_simulator_booted,
     reset_simulator_app_state,
+    shutdown_non_target_simulators,
     scrub_env,
     toml_string,
     toml_array,

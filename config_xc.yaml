@@ -1,0 +1,137 @@
+suite:
+  output_root: ./runs
+  timeout_sec: 1800
+  scenario_timeouts_sec:
+    shell_unprimed: 480
+    shell_primed: 480
+    mcp_unprimed: 540
+    mcp_unprimed_v2: 540
+  stall_timeout_sec: 300
+  trials_per_cell: 30
+  random_seed: 1337
+  plan_mode: blocked_by_scenario
+  shuffle_within_scenario: true
+  baseline_trials_per_scenario: 1
+  summary_cache_strata: true
+  run_baselines: true
+  keep_workdirs: false
+  fetch_remote: false
+  validate_tasks: false
+  clean_agent_env: true
+  use_ccusage_for_codex: true
+  prewarm_spm: true
+  spm_cache_dir: spm_cache
+  post_run_report: true
+  post_run_report_agent: claude-opus
+  post_run_report_path: tool_error_report.md
+  env:
+    EMERGE_IS_RUNNING_FOR_SNAPSHOTS: '1'
+    PATH: /Users/james/Developer/projects/xc-cli/.build/debug:/Users/james/.factory/bin:/Users/james/bin:/Users/james/.resend/bin:/Users/james/Developer/projects/xc-cli/.build/debug:/Users/james/Library/pnpm:/opt/homebrew/opt/ghidra/libexec/support:/Users/james/Library/Python/3.14/bin:/Users/james/.bun/bin:/Users/james/.cargo/bin:/Users/james/.go/bin:/Users/james/.local/bin:/opt/homebrew/opt/python@3.14/libexec/bin:/Users/james/.nvm/versions/node/v22.22.1/bin:/Users/james/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pkg/env/active/bin:/opt/pmk/env/global/bin:/Library/Apple/usr/bin:/Users/james/.cargo/bin:/Users/james/.local/bin
+project:
+  repo_path: /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/sut/HackerNews/ios
+  base_ref: HEAD
+  simulator_name: iPhone 17 Pro
+  build_params:
+    workspace: null
+    project: HackerNews.xcodeproj
+    scheme: HackerNews
+    bundle_id: com.emergetools.hackernews
+    configuration: Debug
+    simulator_name: iPhone 17 Pro
+    destination: platform=iOS Simulator,name=iPhone 17 Pro
+agents:
+- id: codex
+  kind: codex_cli
+  command:
+  - codex
+  - exec
+  - '{EXTRA_ARGS}'
+  - --dangerously-bypass-approvals-and-sandbox
+  - --json
+  - --output-last-message
+  - '{OUT_JSON}'
+  - '{PROMPT}'
+  env:
+    CODEX_MODEL: gpt-5.2-codex
+  pricing:
+    input_per_token: 1.75e-06
+    output_per_token: 1.4e-05
+    cache_read_multiplier: 0.1
+- id: claude-sonnet
+  kind: claude_code_cli
+  command:
+  - claude
+  - -p
+  - --output-format
+  - stream-json
+  - --include-partial-messages
+  - --disable-slash-commands
+  - --setting-sources
+  - local
+  - --verbose
+  - --no-session-persistence
+  - --permission-mode
+  - bypassPermissions
+  - '{EXTRA_ARGS}'
+  - --
+  - '{PROMPT}'
+  env: {}
+  pricing:
+    input_per_token: 3.0e-06
+    output_per_token: 1.5e-05
+    cache_read_multiplier: 0.1
+    cache_write_multiplier_5m: 1.25
+    cache_write_multiplier_1h: 2.0
+- id: claude-opus
+  kind: claude_code_cli
+  command:
+  - claude
+  - --model
+  - claude-opus-4-5-20251101
+  - -p
+  - --output-format
+  - stream-json
+  - --include-partial-messages
+  - --disable-slash-commands
+  - --setting-sources
+  - local
+  - --verbose
+  - --no-session-persistence
+  - --permission-mode
+  - bypassPermissions
+  - '{EXTRA_ARGS}'
+  - --
+  - '{PROMPT}'
+  env: {}
+  pricing:
+    input_per_token: 5.0e-06
+    output_per_token: 2.5e-05
+    cache_read_multiplier: 0.1
+    cache_write_multiplier_5m: 1.25
+    cache_write_multiplier_1h: 2.0
+- id: droid-minimax
+  kind: droid_exec_cli
+  command:
+  - droid
+  - --settings
+  - '{SETTINGS}'
+  - exec
+  - --cwd
+  - '{WORKDIR}'
+  - --auto
+  - medium
+  - --output-format
+  - json
+  - --model
+  - custom:MiniMax-M2.7-highspeed
+  - --append-system-prompt-file
+  - '{WORKDIR}/AGENTS.md'
+  - '{EXTRA_ARGS}'
+  - '{PROMPT}'
+  env: {}
+  pricing: {}
+mcp:
+  enabled: true
+  start_command: []
+  stop_command: []
+  env: {}

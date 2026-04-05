@@ -7,6 +7,7 @@ Provides the TrialResult dataclass and run_one_trial orchestrator function.
 from __future__ import annotations
 
 import dataclasses
+import json
 import os
 import pathlib
 import shlex
@@ -24,6 +25,7 @@ from evals.infrastructure import (
     resolve_developer_dir,
     ensure_simulator_booted,
     reset_simulator_app_state,
+    shutdown_non_target_simulators,
 )
 from evals.metrics import count_invocations, count_mcp_tool_invocations
 from evals.worktrees import make_worktree, remove_worktree
@@ -172,6 +174,7 @@ def run_one_trial(
         env["DEVELOPER_DIR"] = dev_dir
 
     # Clean agent environment if configured
+    clean_root: Optional[pathlib.Path] = None
     if suite.clean_agent_env:
         clean_root = trial_dir / "agent_env"
         safe_mkdir(clean_root)
@@ -186,6 +189,34 @@ def run_one_trial(
                     shutil.copy2(auth_src, auth_dst)
                 except Exception:
                     pass
+        elif agent_cfg.kind == "droid_exec_cli":
+            settings_path = clean_root / "droid-settings.json"
+            settings_payload: Dict[str, Any] = {}
+            if scenario in ("mcp_unprimed", "mcp_unprimed_v2"):
+                suite_root = pathlib.Path(__file__).resolve().parent.parent
+                wrapper_path = suite_root / "mcp_configs" / "mcp_env_wrapper.sh"
+                entry_path = pathlib.Path.home() / ".ai-tools" / "XcodeBuildMCP" / "build" / "index.js"
+                if wrapper_path.exists() and entry_path.exists():
+                    settings_payload = {
+                        "mcpServers": {
+                            "XcodeBuildMCP-Dev": {
+                                "type": "stdio",
+                                "command": str(wrapper_path),
+                                "args": [
+                                    "node",
+                                    "--inspect=9999",
+                                    "--trace-warnings",
+                                    str(entry_path),
+                                ],
+                                "tool_timeout_sec": 600,
+                            }
+                        }
+                    }
+            settings_path.write_text(
+                json.dumps(settings_payload, ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            env["EVAL_AGENT_SETTINGS"] = str(settings_path)
 
     # MCP setup for mcp_unprimed scenarios
     if mcp.enabled and scenario in ("mcp_unprimed", "mcp_unprimed_v2"):
@@ -370,6 +401,7 @@ def run_one_trial(
             )
             if bundle_id and udid:
                 ensure_simulator_booted(udid)
+                shutdown_non_target_simulators(udid)
                 reset_simulator_app_state(udid, bundle_id)
 
     # Build prompt

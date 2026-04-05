@@ -1,0 +1,63 @@
+suite:
+  output_root: ./runs
+  timeout_sec: 1800
+  scenario_timeouts_sec:
+    shell_primed: 480
+  stall_timeout_sec: 300
+  trials_per_cell: 1
+  random_seed: 1337
+  plan_mode: blocked_by_scenario
+  shuffle_within_scenario: true
+  baseline_trials_per_scenario: 1
+  summary_cache_strata: true
+  run_baselines: false
+  keep_workdirs: false
+  fetch_remote: false
+  validate_tasks: false
+  clean_agent_env: true
+  use_ccusage_for_codex: true
+  prewarm_spm: true
+  spm_cache_dir: spm_cache
+  post_run_report: false
+  env:
+    EMERGE_IS_RUNNING_FOR_SNAPSHOTS: '1'
+    PATH: /Users/james/Developer/projects/xc-cli/.build/debug:/Users/james/.factory/bin:/Users/james/bin:/Users/james/.resend/bin:/Users/james/Developer/projects/xc-cli/.build/debug:/Users/james/Library/pnpm:/opt/homebrew/opt/ghidra/libexec/support:/Users/james/Library/Python/3.14/bin:/Users/james/.bun/bin:/Users/james/.cargo/bin:/Users/james/.go/bin:/Users/james/.local/bin:/opt/homebrew/opt/python@3.14/libexec/bin:/Users/james/.nvm/versions/node/v22.22.1/bin:/Users/james/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pkg/env/active/bin:/opt/pmk/env/global/bin:/Library/Apple/usr/bin:/Users/james/.cargo/bin:/Users/james/.local/bin
+project:
+  repo_path: /Users/james/Developer/zrepos/zmisc/zmirror/xcodebuildmcp_eval/sut/HackerNews/ios
+  base_ref: HEAD
+  simulator_name: iPhone 17 Pro
+  build_params:
+    workspace: null
+    project: HackerNews.xcodeproj
+    scheme: HackerNews
+    bundle_id: com.emergetools.hackernews
+    configuration: Debug
+    simulator_name: iPhone 17 Pro
+    destination: platform=iOS Simulator,name=iPhone 17 Pro
+agents:
+- id: droid-gpt54-flex
+  kind: droid_exec_cli
+  command:
+  - droid
+  - --settings
+  - '{SETTINGS}'
+  - exec
+  - --cwd
+  - '{WORKDIR}'
+  - --auto
+  - medium
+  - --output-format
+  - json
+  - --model
+  - GPT-5.4 (Flex)
+  - --append-system-prompt-file
+  - '{WORKDIR}/AGENTS.md'
+  - '{EXTRA_ARGS}'
+  - '{PROMPT}'
+  env: {}
+  pricing: {}
+mcp:
+  enabled: true
+  start_command: []
+  stop_command: []
+  env: {}
