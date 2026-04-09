@@ -1,0 +1,428 @@
+tasks:
+  - id: asc_testflight_groups_pagination_offline
+    description: Validate the repo's offline TestFlight groups pagination surface and emit normalized JSON evidence.
+    kind: capability
+    prompt: |
+      You are evaluating this repository for a shared App Store Connect baseline.
+
+      Goal:
+      - Validate that this repo has an offline/local way to cover TestFlight beta groups listing with pagination semantics.
+      - Do NOT hit Apple servers.
+      - Discover and run the smallest relevant local command(s) or test(s) in this repo.
+      - Write a file named `asc_eval_result.json` in the current working directory.
+
+      Required JSON schema:
+      {
+        "scenario": "asc_testflight_groups_pagination_offline",
+        "tool_family": "xc-cli" | "app-store-connect-cli" | "unknown",
+        "offline": true,
+        "passed": true,
+        "command": "the main command or test command you ran",
+        "evidence": {
+          "pagination": true,
+          "json_output": true,
+          "no_live_apple": true
+        },
+        "notes": "short summary"
+      }
+
+      Rules:
+      - Prefer existing local tests, fixtures, emulator-backed tests, or canned transport tests.
+      - If multiple options exist, use the smallest deterministic one.
+      - Exit immediately after the JSON file is written.
+    setup_commands: []
+    graders:
+      - type: json_assert
+        path: asc_eval_result.json
+        expect:
+          scenario: asc_testflight_groups_pagination_offline
+          offline: true
+          passed: true
+          evidence.pagination: true
+          evidence.json_output: true
+          evidence.no_live_apple: true
+
+  - id: asc_review_loop_offline
+    description: Validate the repo's offline App Review loop surface and emit normalized JSON evidence.
+    kind: capability
+    prompt: |
+      You are evaluating this repository for a shared App Store Connect baseline.
+
+      Goal:
+      - Validate that this repo has an offline/local way to cover an App Review loop: create/submit/reject-or-state-transition/resubmit semantics.
+      - Do NOT hit Apple servers.
+      - Discover and run the smallest relevant local command(s) or test(s) in this repo.
+      - Write a file named `asc_eval_result.json` in the current working directory.
+
+      Required JSON schema:
+      {
+        "scenario": "asc_review_loop_offline",
+        "tool_family": "xc-cli" | "app-store-connect-cli" | "unknown",
+        "offline": true,
+        "passed": true,
+        "command": "the main command or test command you ran",
+        "evidence": {
+          "review_loop": true,
+          "stateful": true,
+          "no_live_apple": true
+        },
+        "notes": "short summary"
+      }
+
+      Rules:
+      - Prefer existing local tests, fixtures, emulator-backed tests, or canned transport tests.
+      - If multiple options exist, use the smallest deterministic one.
+      - Exit immediately after the JSON file is written.
+    setup_commands: []
+    graders:
+      - type: json_assert
+        path: asc_eval_result.json
+        expect:
+          scenario: asc_review_loop_offline
+          offline: true
+          passed: true
+          evidence.review_loop: true
+          evidence.stateful: true
+          evidence.no_live_apple: true
+
+  - id: asc_review_details_offline
+    description: Validate the repo's offline App Review detail surface covering fetch and update of contact/demo metadata.
+    kind: capability
+    prompt: |
+      You are evaluating this repository for a shared App Store Connect baseline.
+
+      Goal:
+      - Validate that this repo has an offline/local App Review detail surface covering fetch and update of contact/demo metadata for a version.
+      - Do NOT hit Apple servers.
+      - Discover and run the smallest relevant local command(s) or test(s) in this repo.
+      - Write a file named `asc_eval_result.json` in the current working directory.
+
+      Required JSON schema:
+      {
+        "scenario": "asc_review_details_offline",
+        "tool_family": "xc-cli" | "app-store-connect-cli" | "unknown",
+        "offline": true,
+        "passed": true,
+        "command": "the main command or test command you ran",
+        "evidence": {
+          "review_details": true,
+          "mutable": true,
+          "no_live_apple": true
+        },
+        "notes": "short summary"
+      }
+
+      Rules:
+      - Prefer existing local tests, fixtures, emulator-backed tests, or canned transport tests.
+      - If multiple options exist, use the smallest deterministic one.
+      - Exit immediately after the JSON file is written.
+    setup_commands: []
+    graders:
+      - type: json_assert
+        path: asc_eval_result.json
+        expect:
+          scenario: asc_review_details_offline
+          offline: true
+          passed: true
+          evidence.review_details: true
+          evidence.mutable: true
+          evidence.no_live_apple: true
+
+  - id: asc_review_items_offline
+    description: Validate the repo's offline App Review items surface covering list, add, update, and remove semantics.
+    kind: capability
+    prompt: |
+      You are evaluating this repository for a shared App Store Connect baseline.
+
+      Goal:
+      - Validate that this repo has an offline/local App Review items surface covering list, add, update, and remove semantics.
+      - Do NOT hit Apple servers.
+      - Discover and run the smallest relevant local command(s) or test(s) in this repo.
+      - Write a file named `asc_eval_result.json` in the current working directory.
+
+      Required JSON schema:
+      {
+        "scenario": "asc_review_items_offline",
+        "tool_family": "xc-cli" | "app-store-connect-cli" | "unknown",
+        "offline": true,
+        "passed": true,
+        "command": "the main command or test command you ran",
+        "evidence": {
+          "review_items": true,
+          "mutable": true,
+          "no_live_apple": true
+        },
+        "notes": "short summary"
+      }
+
+      Rules:
+      - Prefer existing local tests, fixtures, emulator-backed tests, or canned transport tests.
+      - If multiple options exist, use the smallest deterministic one.
+      - Exit immediately after the JSON file is written.
+    setup_commands: []
+    graders:
+      - type: json_assert
+        path: asc_eval_result.json
+        expect:
+          scenario: asc_review_items_offline
+          offline: true
+          passed: true
+          evidence.review_items: true
+          evidence.mutable: true
+          evidence.no_live_apple: true
+
+  - id: asc_review_attachments_offline
+    description: Validate the repo's offline App Review attachment surface covering list, upload/create, fetch, and delete semantics.
+    kind: capability
+    prompt: |
+      You are evaluating this repository for a shared App Store Connect baseline.
+
+      Goal:
+      - Validate that this repo has an offline/local App Review attachment surface covering list, upload/create, fetch, and delete semantics.
+      - Do NOT hit Apple servers.
+      - Discover and run the smallest relevant local command(s) or test(s) in this repo.
+      - Write a file named `asc_eval_result.json` in the current working directory.
+
+      Required JSON schema:
+      {
+        "scenario": "asc_review_attachments_offline",
+        "tool_family": "xc-cli" | "app-store-connect-cli" | "unknown",
+        "offline": true,
+        "passed": true,
+        "command": "the main command or test command you ran",
+        "evidence": {
+          "review_attachments": true,
+          "mutable": true,
+          "no_live_apple": true
+        },
+        "notes": "short summary"
+      }
+
+      Rules:
+      - Prefer existing local tests, fixtures, emulator-backed tests, or canned transport tests.
+      - If multiple options exist, use the smallest deterministic one.
+      - Exit immediately after the JSON file is written.
+    setup_commands: []
+    graders:
+      - type: json_assert
+        path: asc_eval_result.json
+        expect:
+          scenario: asc_review_attachments_offline
+          offline: true
+          passed: true
+          evidence.review_attachments: true
+          evidence.mutable: true
+          evidence.no_live_apple: true
+
+  - id: asc_review_status_history_offline
+    description: Validate the repo's offline review overview surface covering status, doctor, and history diagnostics.
+    kind: capability
+    prompt: |
+      You are evaluating this repository for a shared App Store Connect baseline.
+
+      Goal:
+      - Validate that this repo has an offline/local review overview surface covering status, doctor, and history style diagnostics for the current review state.
+      - Do NOT hit Apple servers.
+      - Discover and run the smallest relevant local command(s) or test(s) in this repo.
+      - Write a file named `asc_eval_result.json` in the current working directory.
+
+      Required JSON schema:
+      {
+        "scenario": "asc_review_status_history_offline",
+        "tool_family": "xc-cli" | "app-store-connect-cli" | "unknown",
+        "offline": true,
+        "passed": true,
+        "command": "the main command or test command you ran",
+        "evidence": {
+          "status": true,
+          "history": true,
+          "no_live_apple": true
+        },
+        "notes": "short summary"
+      }
+
+      Rules:
+      - Prefer existing local tests, fixtures, emulator-backed tests, or canned transport tests.
+      - If multiple options exist, use the smallest deterministic one.
+      - Exit immediately after the JSON file is written.
+    setup_commands: []
+    graders:
+      - type: json_assert
+        path: asc_eval_result.json
+        expect:
+          scenario: asc_review_status_history_offline
+          offline: true
+          passed: true
+          evidence.status: true
+          evidence.history: true
+          evidence.no_live_apple: true
+
+  - id: asc_publish_readiness_offline
+    description: Validate the repo's offline publish-readiness surface checking app, version, build, and review prerequisites.
+    kind: capability
+    prompt: |
+      You are evaluating this repository for a shared App Store Connect baseline.
+
+      Goal:
+      - Validate that this repo has an offline/local publish-readiness surface that checks app, version, build, and review prerequisites before submission.
+      - Do NOT hit Apple servers.
+      - Discover and run the smallest relevant local command(s) or test(s) in this repo.
+      - Write a file named `asc_eval_result.json` in the current working directory.
+
+      Required JSON schema:
+      {
+        "scenario": "asc_publish_readiness_offline",
+        "tool_family": "xc-cli" | "app-store-connect-cli" | "unknown",
+        "offline": true,
+        "passed": true,
+        "command": "the main command or test command you ran",
+        "evidence": {
+          "publish_readiness": true,
+          "cross_resource": true,
+          "no_live_apple": true
+        },
+        "notes": "short summary"
+      }
+
+      Rules:
+      - Prefer existing local tests, fixtures, emulator-backed tests, or canned transport tests.
+      - If multiple options exist, use the smallest deterministic one.
+      - Exit immediately after the JSON file is written.
+    setup_commands: []
+    graders:
+      - type: json_assert
+        path: asc_eval_result.json
+        expect:
+          scenario: asc_publish_readiness_offline
+          offline: true
+          passed: true
+          evidence.publish_readiness: true
+          evidence.cross_resource: true
+          evidence.no_live_apple: true
+
+  - id: asc_submit_for_review_workflow_offline
+    description: Validate the repo's offline end-to-end submit-for-review workflow tying app, version, build, review detail, and submission transitions.
+    kind: capability
+    prompt: |
+      You are evaluating this repository for a shared App Store Connect baseline.
+
+      Goal:
+      - Validate that this repo has an offline/local end-to-end submit-for-review workflow tying app, version, build, review detail, and review submission transitions together.
+      - Do NOT hit Apple servers.
+      - Discover and run the smallest relevant local command(s) or test(s) in this repo.
+      - Write a file named `asc_eval_result.json` in the current working directory.
+
+      Required JSON schema:
+      {
+        "scenario": "asc_submit_for_review_workflow_offline",
+        "tool_family": "xc-cli" | "app-store-connect-cli" | "unknown",
+        "offline": true,
+        "passed": true,
+        "command": "the main command or test command you ran",
+        "evidence": {
+          "workflow": true,
+          "cross_resource": true,
+          "no_live_apple": true
+        },
+        "notes": "short summary"
+      }
+
+      Rules:
+      - Prefer existing local tests, fixtures, emulator-backed tests, or canned transport tests.
+      - If multiple options exist, use the smallest deterministic one.
+      - Exit immediately after the JSON file is written.
+    setup_commands: []
+    graders:
+      - type: json_assert
+        path: asc_eval_result.json
+        expect:
+          scenario: asc_submit_for_review_workflow_offline
+          offline: true
+          passed: true
+          evidence.workflow: true
+          evidence.cross_resource: true
+          evidence.no_live_apple: true
+
+  - id: asc_app_to_deploy_offline
+    description: Validate the repo's offline end-to-end app-to-deploy workflow from IPA through review to deploy-ready state.
+    kind: capability
+    prompt: |
+      You are evaluating this repository for a shared App Store Connect baseline.
+
+      Goal:
+      - Validate that this repo can take a sample app from local IPA through upload, review preparation, rejection/approval loop, and final deploy-ready review state entirely offline without hitting Apple servers.
+      - Do NOT hit Apple servers.
+      - Discover and run the smallest relevant local command(s) or test(s) in this repo.
+      - Write a file named `asc_eval_result.json` in the current working directory.
+
+      Required JSON schema:
+      {
+        "scenario": "asc_app_to_deploy_offline",
+        "tool_family": "xc-cli" | "app-store-connect-cli" | "unknown",
+        "offline": true,
+        "passed": true,
+        "command": "the main command or test command you ran",
+        "evidence": {
+          "app_to_deploy": true,
+          "cross_resource": true,
+          "no_live_apple": true
+        },
+        "notes": "short summary"
+      }
+
+      Rules:
+      - Prefer existing local tests, fixtures, emulator-backed tests, or canned transport tests.
+      - If multiple options exist, use the smallest deterministic one.
+      - Exit immediately after the JSON file is written.
+    setup_commands: []
+    graders:
+      - type: json_assert
+        path: asc_eval_result.json
+        expect:
+          scenario: asc_app_to_deploy_offline
+          offline: true
+          passed: true
+          evidence.app_to_deploy: true
+          evidence.cross_resource: true
+          evidence.no_live_apple: true
+
+  - id: asc_auth_status_surface
+    description: Validate the repo's App Store Connect auth status surface distinguishing auth states without live server mutation.
+    kind: capability
+    prompt: |
+      You are evaluating this repository for a shared App Store Connect baseline.
+
+      Goal:
+      - Validate that this repo exposes a clear App Store Connect auth status surface that can distinguish unauthenticated, authenticated, and invalid-local-auth states without needing live server mutation.
+      - Do NOT hit Apple servers.
+      - Discover and run the smallest relevant local command(s) or test(s) in this repo.
+      - Write a file named `asc_eval_result.json` in the current working directory.
+
+      Required JSON schema:
+      {
+        "scenario": "asc_auth_status_surface",
+        "tool_family": "xc-cli" | "app-store-connect-cli" | "unknown",
+        "offline": true,
+        "passed": true,
+        "command": "the main command or test command you ran",
+        "evidence": {
+          "auth_status": true,
+          "stateful": true
+        },
+        "notes": "short summary"
+      }
+
+      Rules:
+      - Prefer existing local tests, fixtures, emulator-backed tests, or canned transport tests.
+      - If multiple options exist, use the smallest deterministic one.
+      - Exit immediately after the JSON file is written.
+    setup_commands: []
+    graders:
+      - type: json_assert
+        path: asc_eval_result.json
+        expect:
+          scenario: asc_auth_status_surface
+          offline: true
+          passed: true
+          evidence.auth_status: true
+          evidence.stateful: true
